@@ -9,11 +9,9 @@ const Navbar = () => {
   return (
     <nav className="fixed w-full z-50 backdrop-blur-lg bg-primary/70 shadow-2xl border-b border-white/10">
       <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-4 relative">
-        {/* Logo with glow & gradient border */}
-        <a
-          href="/"
-          className="relative group"
-        >
+        {/* Logo */}
+        <a href="/" className="relative group">
+          {/* Gradient border + glow for desktop */}
           <div className="w-16 h-16 rounded-full p-[2px] bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-400 shadow-xl group-hover:scale-110 transition-transform">
             <img
               src={logo}
@@ -33,15 +31,13 @@ const Navbar = () => {
               className="relative group px-2 py-1 rounded-md hover:text-yellow-400 transition-colors"
             >
               {item}
-              {/* Animated underline */}
               <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-yellow-400 rounded-full group-hover:w-full transition-all"></span>
-              {/* Glow effect */}
               <span className="absolute inset-0 rounded-md bg-yellow-400/20 opacity-0 group-hover:opacity-30 transition-opacity blur-sm"></span>
             </a>
           ))}
         </div>
 
-        {/* Mobile Menu Icon */}
+        {/* Mobile Hamburger Icon */}
         <div
           className="md:hidden text-2xl cursor-pointer text-white z-50"
           onClick={() => setIsOpen(!isOpen)}
@@ -50,10 +46,10 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Drop-Down Modal */}
       <div
-        className={`md:hidden fixed top-0 left-0 w-full h-full bg-primary/95 backdrop-blur-md flex flex-col items-center justify-center space-y-10 text-2xl text-white font-bold transition-transform ${
-          isOpen ? "translate-x-0" : "translate-x-full"
+        className={`md:hidden fixed top-0 left-0 w-full h-screen bg-primary/95 backdrop-blur-md flex flex-col items-center pt-24 space-y-10 text-2xl text-white font-bold transition-transform duration-300 ${
+          isOpen ? "translate-y-0 opacity-100 pointer-events-auto" : "-translate-y-full opacity-0 pointer-events-none"
         }`}
       >
         {menuItems.map((item, index) => (
@@ -61,10 +57,9 @@ const Navbar = () => {
             key={index}
             href={`#${item.toLowerCase()}`}
             onClick={() => setIsOpen(false)}
-            className="relative group px-4 py-2 rounded-lg hover:text-yellow-400 transition-colors hover:scale-105"
+            className="px-6 py-3 rounded-lg hover:bg-yellow-400/20 hover:text-yellow-400 transition-all"
           >
             {item}
-            <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-yellow-400 group-hover:w-full transition-all"></span>
           </a>
         ))}
       </div>
