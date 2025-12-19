@@ -4,7 +4,7 @@ import { FaGithub, FaLinkedin, FaWhatsapp, FaEnvelope } from "react-icons/fa";
 
 const About = () => {
   return (
-    <section id="about" className="py-20 bg-primary text-text">
+    <section id="about" className="py-20 bg-primary text-text px-4 sm:px-6 lg:px-0">
       <h2 className="text-4xl font-bold text-center mb-16 text-accent1">
         About Me & Contact
       </h2>
